@@ -19,7 +19,6 @@ from measurement.views import SensorView, SensorEdit, SensorMeasurement, Measure
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('api/', include('measurement.urls')),  # подключаем маршруты из приложения measurement
     path('sensors/', SensorView.as_view()),
     path('sensors/<int:pk>/', SensorEdit.as_view()),
     path('sensors/info/<pk>/', SensorMeasurement.as_view()),

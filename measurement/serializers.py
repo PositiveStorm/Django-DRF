@@ -17,10 +17,13 @@ class SensorSerializer(serializers.ModelSerializer):
 
 
 
+class MeasurementAddSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Measurement
+        fields = ['sensor_id', 'temperature']
+
 
 class MeasurementSerializer(serializers.ModelSerializer):
-    # sensor_id = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
-    # temperature = serializers.FloatField()
     class Meta:
         model = Measurement
         fields = ['temperature', 'created_at']

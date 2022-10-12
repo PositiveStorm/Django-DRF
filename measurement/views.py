@@ -1,14 +1,9 @@
-from django.http import JsonResponse
-from rest_framework.generics import ListAPIView, RetrieveAPIView, ListCreateAPIView, CreateAPIView
+from rest_framework.generics import RetrieveAPIView, CreateAPIView
 from rest_framework.views import APIView
 from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
-# TODO: опишите необходимые обработчики, рекомендуется использовать generics APIView классы:
-# TODO: ListCreateAPIView, RetrieveUpdateAPIView, CreateAPIView
-
-from rest_framework.viewsets import ModelViewSet
 from .models import Measurement, Sensor
-from .serializers import MeasurementSerializer, SensorSerializer, SensorDetailSerializer
+from .serializers import MeasurementSerializer, SensorSerializer, SensorDetailSerializer, MeasurementAddSerializer
 
 
 class SensorView(APIView):
@@ -39,7 +34,7 @@ class SensorEdit(APIView):
 
 class MeasurementAdd(CreateAPIView):
     queryset = Measurement.objects.all()
-    serializer_class = MeasurementSerializer
+    serializer_class = MeasurementAddSerializer
 
 class SensorMeasurement(RetrieveAPIView):
     queryset = Sensor.objects.all()
